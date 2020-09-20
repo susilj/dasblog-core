@@ -7,7 +7,16 @@ namespace DasBlog.Web.UI
 	{
 		public static void Main(string[] args)
 		{
-			CreateWebHostBuilder(args).Build().Run();
+			try
+			{
+				CreateWebHostBuilder(args).Build().Run();
+			}
+			catch(System.Exception ex)
+			{
+				System.Console.WriteLine(ex.ToString());
+			}
+
+			System.Console.ReadLine();
 		}
 
 		public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

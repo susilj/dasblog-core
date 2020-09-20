@@ -30,6 +30,12 @@
     <ProjectReference Include="..\DasBlog.Web.Repositories\DasBlog.Managers.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Config\site.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Config\siteSecurity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Themes\dasblog\_BlogItemSummary.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -97,6 +103,11 @@
    </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Themes\fulcrum\custom.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -228,6 +228,11 @@ namespace DasBlog.Web
 				.AddControllersWithViews()
 				.AddRazorRuntimeCompilation();
 
+			services.Configure<IISServerOptions>(options =>
+			{
+				options.AutomaticAuthentication = false;
+			});
+
 			DasBlogServices = services;
 		}
 
@@ -253,7 +258,9 @@ namespace DasBlog.Web
 			}
 
 			var options = new RewriteOptions()
-				 .AddIISUrlRewrite(env.ContentRootFileProvider, IISUrlRewriteConfigPath);
+				//.AddRewrite(@"(.*)", "http://susilkumarj.net/blog", skipRemainingRules: true)
+				.AddIISUrlRewrite(env.ContentRootFileProvider, IISUrlRewriteConfigPath)
+				;
 
 			app.UseRewriter(options);
 			app.UseRouting();
@@ -292,6 +299,8 @@ namespace DasBlog.Web
 			app.Use(PopulateThreadCurrentPrincipalForMvc);
 			app.UseRouting();
 			app.UseAuthorization();
+
+			//app.UsePathBase("/blog");
 
 			app.UseEndpoints(endpoints =>
 			{
